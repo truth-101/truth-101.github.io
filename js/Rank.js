@@ -1,16 +1,20 @@
 $( document ).ready(function() {
 
     btns = document.querySelectorAll(".btn");
-    rank("../data/rank1.json")
+    rank("../data/real_rank1.json", "#left_bars", "#left_years")
+    rank("../data/rank1.json", "#bars", "#years")
+
 
     btns.forEach(function(ele, i) {
         ele.onclick = function(e) {
             activate(i)
             $("#bars svg").remove()
-            rank("../data/rank" + (i+1) + ".json")
+            $("#left_bars svg").remove()
+            rank("../data/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
+            rank("../data/rank" + (i+1) + ".json", "#bars", "#years")
+
         }
     })
-
 
     function activate(index) {
         btns.forEach(function(ele, i) {
@@ -26,7 +30,7 @@ $( document ).ready(function() {
 
 
 
-function rank(data_url) {
+function rank(data_url, where, where_year) {
     var
         url = data_url,
         width = 900,
@@ -81,13 +85,13 @@ function rank(data_url) {
             lis += "<li" + sel + ">" + year[i] + "</li>";
         }
 
-        d3.select("#years").html(lis);
+        d3.select(where_year).html(lis);
 
         var
             vScale = d3.scale.linear().domain([0, 24]).range([10, height - 100]).clamp(true),
             hScale = d3.scale.linear().domain([0, 120]).range([0, 960]).clamp(true),
-            svg = d3.select("#bars").append("svg").attr("width", width).attr("height", height),
-            li = d3.selectAll("#years li")
+            svg = d3.select(where).append("svg").attr("width", width).attr("height", height),
+            li = d3.selectAll(where_year + " li")
         ;
 
         li.on("click", function (d, i) {
