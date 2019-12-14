@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: $base-font-family;
+    font-size: 80%;
+    background: $background-color;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $background-color 45%, $brand-color-light);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $background-color 45%, $brand-color-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    line-height: $base-line-height;
+}
+
+section {
+    min-height: 100vh;
+    padding: 0 3rem;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.75rem;
+    color: $brand-color;
+}
+
+// grid
+.col {
+    float: left;
+}
+.col-4 {
+    width: 33.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+// rank
+#rank {
+    opacity: 0;
+    margin-top: -30vh;
+    z-index: 999;
+}
+
+// intro
+#intro {
+    background: url("../img/bg.jpg") top center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 110vh;
+    z-index: -1;
+    img {
+        min-width: 300px;
+        width: 40vw;
+        position: absolute;
+        margin: auto;
+        top: -3rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .overlay{
+        position: absolute;
+        top: 0; 
+        right: 0; 
+        left: 0; 
+        bottom: 0;
+        background: url("../img/bg_blurred.jpg") top center no-repeat;
+        background-size: cover;
+        z-index: 0;
+        opacity: 0;
+      }
+}
+
+// conclusion
+#conc {
+    text-align: center;
+    padding: 2rem 10rem;
+    line-height: 2.0;
+}
