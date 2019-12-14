@@ -1,0 +1,321 @@
+{ 
+    "header":{ 
+       "id":"1",
+       "prepared":"2019-12-15T18:20:01.4106007Z",
+       "sender":{ 
+          "id": "Truth101",
+          "name": "truth101"
+       },
+       "links":[]
+    },
+    "dataSets":[ 
+       { 
+            "action":"Information",
+            "observations":{ 
+                "0:0:0:0:0:0": [
+                    8,
+                    0,
+                    null
+                ],
+                "1:0:0:0:0:0": [
+                    21,
+                    0,
+                    null
+                ],
+                "2:0:0:0:0:0": [
+                    13,
+                    0,
+                    null
+                ],
+                "3:0:0:0:0:0": [
+                    28,
+                    0,
+                    null
+                ],
+                "4:0:0:0:0:0": [
+                    29,
+                    0,
+                    null
+                ],
+                "5:0:0:0:0:0": [
+                    26,
+                    0,
+                    null
+                ],
+                "6:0:0:0:0:0": [
+                    24,
+                    0,
+                    null
+                ],
+                "7:0:0:0:0:0": [
+                    23,
+                    0,
+                    null
+                ],
+                "8:0:0:0:0:0": [
+                    22,
+                    0,
+                    null
+                ],
+                "9:0:0:0:0:0": [
+                    27,
+                    0,
+                    null
+                ],
+                "10:0:0:0:0:0": [
+                    17,
+                    0,
+                    null
+                ],
+                "11:0:0:0:0:0": [
+                    25,
+                    0,
+                    null
+                ],
+                "12:0:0:0:0:0": [
+                    5,
+                    0,
+                    null
+                ],
+                "13:0:0:0:0:0": [
+                    9,
+                    0,
+                    null
+                ],
+                "14:0:0:0:0:0": [
+                    2,
+                    0,
+                    null
+                ],
+                "15:0:0:0:0:0": [
+                    19,
+                    0,
+                    null
+                ],
+                "16:0:0:0:0:0": [
+                    10,
+                    0,
+                    null
+                ],
+                "17:0:0:0:0:0": [
+                    0,
+                    0,
+                    null
+                ],
+                "18:0:0:0:0:0": [
+                    20,
+                    0,
+                    null
+                ],
+                "19:0:0:0:0:0": [
+                    15,
+                    0,
+                    null
+                ]
+            }
+       }
+    ],
+    "structure":{ 
+       "dimensions":{ 
+            "observation":[ 
+                { 
+                "keyPosition":0,
+                "id":"CANDIDATE",
+                "name":"Candidate",
+                "values":[ 
+                    {
+                        "id": "강민희",
+                        "name": "강민희"
+                    },
+                    {
+                        "id": "구정모",
+                        "name": "구정모"
+                    },
+                    {
+                        "id": "금동현",
+                        "name": "금동현"
+                    },
+                    {
+                        "id": "김민규",
+                        "name": "김민규"
+                    },
+                    {
+                        "id": "김요한",
+                        "name": "김요한"
+                    },
+                    {
+                        "id": "김우석",
+                        "name": "김우석"
+                    },
+                    {
+                        "id": "남도현",
+                        "name": "남도현"
+                    },
+                    {
+                        "id": "손동표",
+                        "name": "손동표"
+                    },
+                    {
+                        "id": "송유빈",
+                        "name": "송유빈"
+                    },
+                    {
+                        "id": "송형준",
+                        "name": "송형준"
+                    },
+                    {
+                        "id": "이세진",
+                        "name": "이세진"
+                    },
+                    {
+                        "id": "이은상",
+                        "name": "이은상"
+                    },
+                    {
+                        "id": "이진혁",
+                        "name": "이진혁"
+                    },
+                    {
+                        "id": "이한결",
+                        "name": "이한결"
+                    },
+                    {
+                        "id": "조승연",
+                        "name": "조승연"
+                    },
+                    {
+                        "id": "차준호",
+                        "name": "차준호"
+                    },
+                    {
+                        "id": "토니",
+                        "name": "토니"
+                    },
+                    {
+                        "id": "한승우",
+                        "name": "한승우"
+                    },
+                    {
+                        "id": "함원진",
+                        "name": "함원진"
+                    },
+                    {
+                        "id": "황윤성",
+                        "name": "황윤성"
+                    }
+                ]
+             },
+             { 
+                "id":"TIME_PERIOD",
+                "name":"Time",
+                "values":[ 
+                   { 
+                      "id":"Real Rank",
+                      "name":"Real Rank"
+                   }
+                ],
+                "role":"TIME_PERIOD"
+             },
+             { 
+                "keyPosition": 1,
+                "id":"SEX",
+                "name":"Sex",
+                "values":[ 
+                   { 
+                      "id":"MW",
+                      "name":"All persons"
+                   }
+                ]
+             },
+             { 
+                "keyPosition": 2,
+                "id":"AGE",
+                "name":"Age",
+                "values":[ 
+                   { 
+                      "id":"900000",
+                      "name":"Total"
+                   }
+                ]
+             },
+             { 
+                "keyPosition":3,
+                "id":"SERIES",
+                "name":"Series",
+                "values":[ 
+                   { 
+                      "id":"UR",
+                      "name":"Unemployment rate"
+                   }
+                ]
+             },
+             { 
+                "keyPosition":4,
+                "id":"FREQ",
+                "name":"Frequency",
+                "values":[ 
+                   { 
+                      "id":"A",
+                      "name":"Annual"
+                   }
+                ]
+             }
+          ]
+       },
+       "attributes":{ 
+          "dataSet":[ 
+             { 
+                "id":"UNIT",
+                "name":"Unit",
+                "values":[ 
+                   { 
+                      "id":"PC",
+                      "name":"Percentage"
+                   }
+                ],
+                "role":"UNIT_MEASURE"
+             },
+             { 
+                "id":"POWERCODE",
+                "name":"Unit multiplier",
+                "values":[ 
+                   { 
+                      "id":"0",
+                      "name":"Units"
+                   }
+                ],
+                "role":"UNIT_MULT"
+             },
+             { 
+                "id":"REFERENCEPERIOD",
+                "name":"Reference period",
+                "values":[ 
+ 
+                ],
+                "role":"BASE_PER"
+             }
+          ],
+          "series":[ 
+ 
+          ],
+          "observation":[ 
+             { 
+                "id":"TIME_FORMAT",
+                "name":"Time Format",
+                "values":[ 
+                   { 
+                      "id":"P1Y",
+                      "name":"Annual"
+                   }
+                ]
+             },
+             { 
+                "id":"OBS_STATUS",
+                "name":"Observation Status",
+                "values":[ 
+                ]
+             }
+          ]
+       }
+    }
+ }
