@@ -1,1 +1,1 @@
-- 그냥 켜면 안됨. `python -m SimpleHTTPServer` 해야 함.
+- 그냥 켜면 안됨. `python -m SimpleHTTPServer` or `python -m http.server` (v3) 해야 함.
