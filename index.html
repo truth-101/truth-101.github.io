@@ -3,18 +3,55 @@
 <head>
   <title>TRUTH 101</title>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Jaeyoon Song"/>
+	<meta name="description" content="데이터저널리즘 2019 Fall">
+
   <link href="css/main.min.css" rel="stylesheet" media="screen">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" type="text/javascript"></script>
-  <script src="https://cdn.jsdelivr.net/combine/npm/jsonstat@0.13.13,npm/jsonstat-utils@2.5.5"></script>
-  <script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
-
+  <script src="js/plugin.js"></script>
+  <script src="js/index.js"></script>
   <script src="js/Rank.js"></script>
   <!-- <script data-main="js/index.js" src="js/require.js"></script> -->
 </head>
 <body ng-init="name='World'">
-    <ul id="years"></ul>
-    <div id="bars"></div>
+    <!-- intro -->
+    <section id="intro">
+      <!-- <div class="parallax"></div> -->
+      <!-- <img class="parallax" src="img/bg.jpg" alt=""> -->
+      <img src="img/logo.png" alt="logo">
+      <div class="overlay"></div>
+    </section>
+    <!-- rank -->
+    <section id="rank">
+        <div class="col col-4">
+          <h2>방송상 순위</h2>
+        </div>
+        <div class="col col-8">
+          <h2>데이터상 순위</h2>
+          <ul id="years"></ul>
+          <div id="bars"></div>
+        </div>
+    </section>
+
+    <!-- diff -->
+    <section>
+      <h2>개인별 집중 분석</h2>
+    </section>
+
+
+    <!-- 방송분량 변화 -->
+    <!-- <section>
+
+    </section> -->
+
+    <!-- conclusion -->
+    <section id="conc">
+      <h2>맺음말</h2>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente deserunt culpa voluptates est ab doloribus totam ratione aspernatur eius necessitatibus, velit sed fugit aut ipsum praesentium cum, atque voluptate officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, in quibusdam voluptates suscipit, non illo praesentium aut mollitia ut reprehenderit ipsam. Deserunt, nulla? Consectetur tempore, sit molestias dolor odio blanditiis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ad enim libero ratione, vitae, unde nobis illum iste delectus, deleniti est dolore? Sit veritatis velit placeat sed nobis atque totam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, enim soluta, quo inventore doloribus dolorum cumque nam quidem est suscipit quae distinctio explicabo molestias itaque accusantium voluptates reprehenderit esse voluptas. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi rem exercitationem, cumque sit laborum sapiente cum nihil quisquam quis tenetur iste ut minima non atque. Amet nihil deserunt laborum rem. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas ducimus nobis, sapiente nemo iusto rem pariatur dolore! Cum, placeat excepturi. Earum excepturi suscipit eligendi recusandae, repellendus perferendis asperiores aliquid quo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore mollitia exercitationem culpa velit voluptate autem, veritatis eum nam alias corrupti perferendis, in reiciendis dicta rem quod, aliquid quidem libero omnis?
+    </section>
+    
     
 </body>
 </html>

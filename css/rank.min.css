@@ -1,0 +1,2 @@
+.bar{fill:green}.over{fill:lightgreen}.text{font-size:8px}.max{fill:red}.selected{fill:black}#years{display:block;width:670px;margin:0;padding:0}#years li{display:inline;border:1px solid green;border-radius:3px;padding:2px 4px;margin-right:14px;color:green;cursor:pointer}#years li:hover,#years li.selected{background-color:lightgreen;color:black}
+/*# sourceMappingURL=rank.min.css.map */
