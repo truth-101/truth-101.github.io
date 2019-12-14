@@ -1,34 +1,35 @@
  .bar {
-   fill: green;
+   fill: $brand-color;
  }
  .over {
-   fill: lightgreen;
+   opacity: .75;
  }
  .text {
-   font-size: 8px;
+   font-size: .75rem;
  }
  .max {
    fill: red;
  }
- .selected {
-   fill: black;
- }
+//  .selected {
+//    fill: black;
+//  }
  #years {
    display: block;
    width: 670px;
    margin: 0;
+   margin-bottom: 10px;
    padding: 0;
  }
  #years li {
    display: inline;
-   border: 1px solid green;
+   border: 1px solid $brand-color;
    border-radius: 3px;
-   padding: 2px 4px;
+   padding: .25rem .6rem;
    margin-right: 14px;
-   color: green;
+   color: $brand-color;
    cursor: pointer;
  }
  #years li:hover, #years li.selected {
-   background-color: lightgreen;
+   background-color: $brand-color-light;
    color: black;
  }
