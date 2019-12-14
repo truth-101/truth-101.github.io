@@ -1,6 +1,9 @@
  .bar {
    fill: $brand-color;
  }
+ #left_bars .bar {
+   fill: rgba($brand-color, 0.75);
+ }
  .over {
    opacity: .75;
  }
@@ -22,14 +25,14 @@
  }
  #years li {
    display: inline;
-   border: 1px solid $brand-color;
+   border: 1px solid $brand-color-light;
    border-radius: 3px;
    padding: .25rem .6rem;
    margin-right: 14px;
-   color: $brand-color;
+   color: $brand-color-light;
    cursor: pointer;
  }
  #years li:hover, #years li.selected {
    background-color: $brand-color-light;
-   color: black;
+   color: #fff;
  }
