@@ -294,7 +294,9 @@ function diff(i) {
     var city = svg.selectAll(".city")
       .data(cities)
       .enter().append("g")
-      .attr("class", "city");
+      .attr("class", function(d, i) {
+          return "city c" + i
+      });
 
     city.append("path")
       .attr("class", "line")
