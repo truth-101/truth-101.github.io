@@ -59,6 +59,17 @@
       margin-bottom: 2rem;
       .btn {
         padding: .75rem;
+        position: relative;
+        &.featured::after {
+          content: "featured";
+          position: absolute;
+          top: -10px;
+          left: 0;
+          font-size: .75rem;
+          color: #fff;
+          background-color: #bd0a0a;
+          padding: 0 .2rem;
+        }
       }
     }
     #lines {

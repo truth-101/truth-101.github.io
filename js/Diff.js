@@ -127,7 +127,12 @@ var dict = [
 $( document ).ready(function() {
     var members = document.getElementById("members")
     dict.forEach(function(ele, i) {
-        members.innerHTML += "<a class='btn'>" + ele + "</a>"
+        className = "btn"
+        if (i == 0)
+            className += " active"
+        if (i == 0 || i == 1 || i == 9 || i == 12)
+            className += " featured"
+        members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
 
     var btns = Array.from(document.querySelectorAll("#members .btn"))
