@@ -13,6 +13,7 @@
   <script src="js/plugin.js"></script>
   <script src="js/index.js"></script>
   <script src="js/Rank.js"></script>
+  <script src="js/Diff.js"></script>
   <!-- <script data-main="js/index.js" src="js/require.js"></script> -->
 </head>
 <body ng-init="name='World'">
@@ -46,10 +47,13 @@
     </section>
 
     <!-- diff -->
-    <section>
-      <h2>개인별 집중 분석</h2>
+    <section id="diff">
+      <div class="row">
+          <h2>개인별 집중 분석</h2>
+          <div id="members"></div>
+          <div id="lines"></div>
+      </div>
     </section>
-
 
     <!-- 방송분량 변화 -->
     <!-- <section>

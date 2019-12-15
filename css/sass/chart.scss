@@ -36,3 +36,33 @@
    background-color: $brand-color-light;
    color: #fff;
  }
+
+ .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+
+  // diff
+  #diff {
+    
+    #members {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      .btn {
+        padding: .75rem;
+      }
+    }
+    #lines {
+      display: flex;
+      justify-content: center;
+    }
+  }

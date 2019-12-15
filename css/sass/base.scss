@@ -6,8 +6,8 @@ body {
     font-family: $base-font-family;
     font-size: 80%;
     background: $background-color;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, $background-color 45%, $brand-color-light);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, $background-color 45%, $brand-color-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, $background-color 30%, $brand-color-light);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $background-color 30%, $brand-color-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     line-height: $base-line-height;
 }
 
@@ -55,6 +55,14 @@ h2 {
     cursor: pointer;
     &.active {
         background-color: rgba($brand-color, .4);
+    }
+}
+
+// diff
+#diff {
+    margin-top: 20vh;
+    h2 {
+        text-align: center;
     }
 }
 
