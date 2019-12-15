@@ -52,6 +52,9 @@
 
   // diff
   #diff {
+    .c4 path {
+      stroke-width: 5px;
+    }
     
     #members {
       display: flex;
