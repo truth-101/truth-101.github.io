@@ -130,7 +130,7 @@ $( document ).ready(function() {
         className = "btn"
         if (i == 0)
             className += " active"
-        if (i == 0 || i == 1 || i == 9 || i == 12)
+        if (i == 3 || i == 7 || i == 9 || i == 12)
             className += " featured"
         members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
