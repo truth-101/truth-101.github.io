@@ -113,10 +113,10 @@ $( document ).ready(function() {
         members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
 
-    diff(3, "#chart1");
-    diff(7, "#chart2");
-    diff(9, "#chart3");
-    diff(12, "#chart4");
+    diff(9, "#chart1");
+    diff(3, "#chart2");
+    diff(12, "#chart3");
+    diff(7, "#chart4");
 
     var btns = Array.from(document.querySelectorAll("#members .btn"))
     btns.forEach(function(btn, i) {
@@ -239,7 +239,7 @@ function diff(i, where) {
       .attr('class', 'legend');
 
     legend.append('rect')
-      .attr('x', width + 101)
+      .attr('x', width + 91)
       .attr('y', function(d, i) {
         return i * 20;
       })
@@ -250,7 +250,7 @@ function diff(i, where) {
       });
 
     legend.append('text')
-      .attr('x', width + 115)
+      .attr('x', width + 105)
       .attr('y', function(d, i) {
         return (i * 20) + 9;
       })
@@ -289,21 +289,21 @@ function diff(i, where) {
         return color(d.name);
       });
 
-    city.append("text")
-      .datum(function(d) {
-        return {
-          name: d.name,
-          value: d.values[d.values.length - 1]
-        };
-      })
-      .attr("transform", function(d) {
-        return "translate(" + x(d.value.time) + "," + y(d.value.temperature) + ")";
-      })
-      .attr("x", 3)
-      .attr("dy", ".35em")
-      .text(function(d) {
-        return d.name;
-      });
+    // city.append("text")
+      // .datum(function(d) {
+      //   return {
+      //     name: d.name,
+      //     value: d.values[d.values.length - 1]
+      //   };
+      // })
+      // .attr("transform", function(d) {
+      //   return "translate(" + x(d.value.time) + "," + y(d.value.temperature) + ")";
+      // })
+      // .attr("x", 3)
+      // .attr("dy", ".35em")
+      // .text(function(d) {
+      //   return d.name;
+      // });
 
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
