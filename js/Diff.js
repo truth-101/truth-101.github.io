@@ -195,7 +195,6 @@ function diff(i) {
       .orient("left");
 
     var line = d3.svg.line()
-      .interpolate("basis")
       .x(function(d) {
         return x(d.time);
       })
