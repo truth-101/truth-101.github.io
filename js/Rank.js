@@ -196,7 +196,7 @@ function rank(data_url, where, where_year) {
             //     })
             //     ;
 
-            rect.transition().duration(500)
+            svg.selectAll("rect").data(arr).transition().duration(500)
                 .attr("width",function(d, i) {
                     return hScale(d.value);
                 })
@@ -205,8 +205,7 @@ function rank(data_url, where, where_year) {
                 })
                 .attr("class", function(d, i) {
                     return "bar rank" + dict.indexOf(d.name)
-                })
-                ;
+                });
 
             var titles = svg.selectAll("rect title").data(arr);
             titles.text(function(d, i) {
