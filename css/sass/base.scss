@@ -98,10 +98,31 @@ h2 {
       }
 }
 
+// body
+.case {
+    padding: 2rem 3rem;
+    line-height: 2.0;
+    font-size: 108%;
+    img {
+        width: 400px;
+        display: inline-block;
+        margin: 1rem;
+        float: left;
+        &.right {
+            float: right;
+        }
+    }
+}
+
+strong {
+    font-weight: 400;
+}
+
 // conclusion
 #conc {
-    margin-top: 20vh;
     text-align: center;
+    font-size: 108%;
     padding: 2rem 10rem;
     line-height: 2.0;
+    margin-bottom: 20vh;
 }
