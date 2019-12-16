@@ -51,13 +51,8 @@
     stroke-width: 1.5px;
   }
 
-  .case {
-    .c4 path {
-      stroke-width: 5px;
-    }
-  }
   // diff
-  #diff {
+  #diff, .case {
     .c4 path {
       stroke-width: 5px;
     }
