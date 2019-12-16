@@ -16,6 +16,22 @@ section {
     padding: 0 3rem;
 }
 
+#common {
+    background-image: url("../img/bg_special.jpg");
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    opacity: .75;
+    h2 {
+        color: black;
+        font-weight: 600;
+
+    }
+}
+
 h2 {
     font-weight: 300;
     font-size: 1.65rem;

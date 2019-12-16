@@ -147,9 +147,10 @@ function rank(data_url, where, where_year) {
                 });
                 
             // values
-            var rect = svg.selectAll("rect").data(arr);
+            var rect = svg.selectAll("g").data(arr);
             
-            rect.enter().append("rect")
+            rect.enter().append("g")
+                .append("rect")
                 .attr("x", function(d, i) {
                     return 50; // vScale(i);
                 })
@@ -165,7 +166,7 @@ function rank(data_url, where, where_year) {
                 .attr("class", function(d, i) {
                     return "bar rank" + dict.indexOf(d.name)
                 })
-                .attr("val", function(d, i) {
+                .attr("data-value", function(d, i) {
                     return d.value * 100000
                 })
                 .on("mouseover", function(d, i) {
@@ -177,11 +178,23 @@ function rank(data_url, where, where_year) {
                 .on("click", function(d, i) {
                     var sel = d3.selectAll(".rank" + dict.indexOf(d.name));
                     sel.classed("selected", !sel.classed("selected"));
-                })
-                .append("title").text(function(d, i){
-                    return descr(d);
-                })
-                ;
+                });
+
+            // rect.enter().append("text")
+            //     .text(function(d, i){
+            //         return parseInt(d.value);
+            //     })
+            //     .attr("y", function(d, i) {
+            //         return vScale(i); // height - 25 - hScale(d.value);
+            //     })
+            //     .attr("x", function(d, i) {
+            //         return hScale(d.value) + 90; // vScale(i);
+            //     })
+            //     .attr("width", 300)
+            //     .attr("height", function() {
+            //         return ((height - 2 * margin) / arr.length) / 2;
+            //     })
+            //     ;
 
             rect.transition().duration(500)
                 .attr("width",function(d, i) {
@@ -189,6 +202,19 @@ function rank(data_url, where, where_year) {
                 })
                 .attr("x", function(d, i) {
                     return 50 // height - 25 - hScale(d.value);
+                })
+                .attr("class", function(d, i) {
+                    return "bar rank" + dict.indexOf(d.name)
+                })
+                .on("mouseover", function(d, i) {
+                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", true);
+                })
+                .on("mouseout", function(d, i) {
+                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", false);
+                })
+                .on("click", function(d, i) {
+                    var sel = d3.selectAll(".rank" + dict.indexOf(d.name));
+                    sel.classed("selected", !sel.classed("selected"));
                 });
 
             var titles = svg.selectAll("rect title").data(arr);
