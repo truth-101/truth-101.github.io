@@ -12,6 +12,30 @@
  * - Getting scroll position using requestAnimationFrame for better performance
  */
 
+
+var dict = [
+  "강민희",
+  "구정모",
+  "금동현",
+  "김민규",
+  "김요한",
+  "김우석",
+  "남도현",
+  "손동표",
+  "송유빈",
+  "송형준",
+  "이세진",
+  "이은상",
+  "이진혁",
+  "이한결",
+  "조승연",
+  "차준호",
+  "토니",
+  "한승우",
+  "함원진",
+  "황윤성"
+]
+
 $( document ).ready(function() {
 
 /**
