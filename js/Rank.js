@@ -206,16 +206,7 @@ function rank(data_url, where, where_year) {
                 .attr("class", function(d, i) {
                     return "bar rank" + dict.indexOf(d.name)
                 })
-                .on("mouseover", function(d, i) {
-                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", true);
-                })
-                .on("mouseout", function(d, i) {
-                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", false);
-                })
-                .on("click", function(d, i) {
-                    var sel = d3.selectAll(".rank" + dict.indexOf(d.name));
-                    sel.classed("selected", !sel.classed("selected"));
-                });
+                ;
 
             var titles = svg.selectAll("rect title").data(arr);
             titles.text(function(d, i) {
