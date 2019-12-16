@@ -275,7 +275,7 @@ function diff(i, where) {
       .attr("y", -43)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("순위(Inversed)");
+      .text("순위");
 
     var city = svg.selectAll(".city")
       .data(cities)
