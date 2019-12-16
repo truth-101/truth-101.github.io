@@ -180,23 +180,42 @@ function rank(data_url, where, where_year) {
                     sel.classed("selected", !sel.classed("selected"));
                 });
 
-            // rect.enter().append("text")
-            //     .text(function(d, i){
-            //         return parseInt(d.value);
-            //     })
-            //     .attr("y", function(d, i) {
-            //         return vScale(i); // height - 25 - hScale(d.value);
-            //     })
-            //     .attr("x", function(d, i) {
-            //         return hScale(d.value) + 90; // vScale(i);
-            //     })
-            //     .attr("width", 300)
-            //     .attr("height", function() {
-            //         return ((height - 2 * margin) / arr.length) / 2;
-            //     })
-            //     ;
+            rect.enter().append("text")
+                .text(function(d, i){
+                    let result = "0";
+                    if (where == "#bars") {
+                        result = parseInt(d.value) + "K"
+                    }
+                    else {
+                        standard = 20
 
-            rect.transition().duration(500)
+                        if (data_url == "../data/real_rank1.json") 
+                            standard = 30
+
+                        result = parseInt(standard - d.value) + "위"
+                    }
+
+                    return result;
+                })
+                .attr("y", function(d, i) {
+                    return vScale(i) + 12; // height - 25 - hScale(d.value);
+                })
+                .attr("x", function(d, i) {
+                    return hScale(d.value) + 60; // vScale(i);
+                })
+                .attr("width", 300)
+                .attr("height", function() {
+                    return ((height - 2 * margin) / arr.length) / 2;
+                })
+                .attr("class", "dataLabel")
+                ;
+
+
+            // filters
+
+            var gs = svg.selectAll("g")
+
+            gs.select("rect").data(arr).transition().duration(500)
                 .attr("width",function(d, i) {
                     return hScale(d.value);
                 })
@@ -205,22 +224,42 @@ function rank(data_url, where, where_year) {
                 })
                 .attr("class", function(d, i) {
                     return "bar rank" + dict.indexOf(d.name)
-                })
-                .on("mouseover", function(d, i) {
-                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", true);
-                })
-                .on("mouseout", function(d, i) {
-                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", false);
-                })
-                .on("click", function(d, i) {
-                    var sel = d3.selectAll(".rank" + dict.indexOf(d.name));
-                    sel.classed("selected", !sel.classed("selected"));
                 });
 
-            var titles = svg.selectAll("rect title").data(arr);
-            titles.text(function(d, i) {
-                return descr(d);
-            });
+            svg.selectAll("text.dataLabel").data(arr).transition().duration(500)
+                .text(function(d, i){
+                    let result = "0";
+                    if (where == "#bars") {
+                        result = parseInt(d.value) + "K"
+                    }
+                    else {
+                        standard = 20
+
+                        if (data_url == "../data/real_rank1.json") 
+                            standard = 30
+
+                        result = parseInt(standard - d.value) + "위"
+                    }
+
+                    return result;
+                })
+                .attr("y", function(d, i) {
+                    return vScale(i) + 12; // height - 25 - hScale(d.value);
+                })
+                .attr("x", function(d, i) {
+                    return hScale(d.value) + 60; // vScale(i);
+                })
+                .attr("width", 300)
+                .attr("height", function() {
+                    return ((height - 2 * margin) / arr.length) / 2;
+                })
+                ;
+
+
+            // var titles = svg.selectAll("rect title").data(arr);
+            // titles.text(function(d, i) {
+            //     return descr(d);
+            // });
             
         }
 
