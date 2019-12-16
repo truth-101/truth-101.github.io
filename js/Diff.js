@@ -157,6 +157,7 @@ function diff(i, where) {
       .range([0, width]);
 
     var y = d3.scale.linear()
+      .domain([-3, 20])
       .range([height, 0]);
 
     var color = d3.scale.category10();
@@ -175,7 +176,10 @@ function diff(i, where) {
 
     var yAxis = d3.svg.axis()
       .scale(y)
-      .orient("left");
+      .orient("left")
+      .tickFormat(function(e){
+          return 21 - e;
+      });
 
     var line = d3.svg.line()
       .x(function(d) {
@@ -219,18 +223,18 @@ function diff(i, where) {
         return d.time;
     }));
 
-    y.domain([
-      d3.min(cities, function(c) {
-        return d3.min(c.values, function(v) {
-          return v.temperature;
-        });
-      }),
-      d3.max(cities, function(c) {
-        return d3.max(c.values, function(v) {
-          return v.temperature;
-        });
-      })
-    ]);
+    // y.domain([
+    //   d3.min(cities, function(c) {
+    //     return d3.min(c.values, function(v) {
+    //       return v.temperature;
+    //     });
+    //   }),
+    //   d3.max(cities, function(c) {
+    //     return d3.max(c.values, function(v) {
+    //       return v.temperature;
+    //     });
+    //   })
+    // ]);
 
     var legend = svg.selectAll('g')
       .data(cities)
