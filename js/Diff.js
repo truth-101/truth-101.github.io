@@ -113,15 +113,20 @@ $( document ).ready(function() {
         members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
 
+    diff(3, "#chart1");
+    diff(7, "#chart2");
+    diff(9, "#chart3");
+    diff(12, "#chart4");
+
     var btns = Array.from(document.querySelectorAll("#members .btn"))
     btns.forEach(function(btn, i) {
         btn.onclick = function(e) {
             $("#diff svg").remove()
             activate(i);
-            diff(i);
+            diff(i, "#lines");
         }
     })
-    diff(0)
+    diff(0, "#lines")
 
 
     function activate(index) {
@@ -136,7 +141,7 @@ $( document ).ready(function() {
 
 
 
-function diff(i) {
+function diff(i, where) {
     var margin = {
         top: 20,
         right: 210,
@@ -180,7 +185,7 @@ function diff(i) {
         return y(d.temperature);
       });
 
-    var svg = d3.select("#lines").append("svg")
+    var svg = d3.select(where).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
