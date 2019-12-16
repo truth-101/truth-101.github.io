@@ -113,10 +113,10 @@ $( document ).ready(function() {
         members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
 
-    diff(3, "#chart1");
-    diff(7, "#chart2");
+    diff(9, "#chart1");
+    diff(12, "#chart2");
     diff(9, "#chart3");
-    diff(12, "#chart4");
+    diff(3, "#chart4");
 
     var btns = Array.from(document.querySelectorAll("#members .btn"))
     btns.forEach(function(btn, i) {
