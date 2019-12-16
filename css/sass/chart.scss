@@ -1,12 +1,13 @@
  .bar {
    fill: $brand-color;
+   &.over, &.selected {
+      fill: red !important;
+    }
  }
  #left_bars .bar {
    fill: rgba($brand-color, 0.75);
  }
- .over {
-   opacity: .75;
- }
+ 
  .text {
    font-size: .75rem;
  }

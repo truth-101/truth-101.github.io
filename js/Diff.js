@@ -101,28 +101,6 @@ var diff_data = [
     3	6	6	12	13	5	`,
 ]
 
-var dict = [
-    "강민희",
-    "구정모",
-    "금동현",
-    "김민규",
-    "김요한",
-    "김우석",
-    "남도현",
-    "손동표",
-    "송유빈",
-    "송형준",
-    "이세진",
-    "이은상",
-    "이진혁",
-    "이한결",
-    "조승연",
-    "차준호",
-    "토니",
-    "한승우",
-    "함원진",
-    "황윤성"
-]
 
 $( document ).ready(function() {
     var members = document.getElementById("members")
@@ -130,7 +108,7 @@ $( document ).ready(function() {
         className = "btn"
         if (i == 0)
             className += " active"
-        if (i == 0 || i == 1 || i == 9 || i == 12)
+        if (i == 3 || i == 7 || i == 9 || i == 12)
             className += " featured"
         members.innerHTML += "<a class='" + className + "'>" + ele + "</a>"
     })
@@ -161,7 +139,7 @@ $( document ).ready(function() {
 function diff(i) {
     var margin = {
         top: 20,
-        right: 80,
+        right: 210,
         bottom: 30,
         left: 50
       },
@@ -195,7 +173,6 @@ function diff(i) {
       .orient("left");
 
     var line = d3.svg.line()
-      .interpolate("basis")
       .x(function(d) {
         return x(d.time);
       })
@@ -257,7 +234,7 @@ function diff(i) {
       .attr('class', 'legend');
 
     legend.append('rect')
-      .attr('x', width - 20)
+      .attr('x', width + 101)
       .attr('y', function(d, i) {
         return i * 20;
       })
@@ -268,7 +245,7 @@ function diff(i) {
       });
 
     legend.append('text')
-      .attr('x', width - 8)
+      .attr('x', width + 115)
       .attr('y', function(d, i) {
         return (i * 20) + 9;
       })
@@ -286,10 +263,10 @@ function diff(i) {
       .call(yAxis)
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("y", -43)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("순위(Inversed)");
 
     var city = svg.selectAll(".city")
       .data(cities)

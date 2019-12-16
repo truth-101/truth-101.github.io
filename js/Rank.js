@@ -12,7 +12,6 @@ $( document ).ready(function() {
             $("#left_bars svg").remove()
             rank("../data/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
             rank("../data/rank" + (i+1) + ".json", "#bars", "#years")
-
         }
     })
 
@@ -57,7 +56,7 @@ function rank(data_url, where, where_year) {
                 function(d) {
                     if (d.TIME_PERIOD >= start){
                         return {
-                            area: d.CANDIDATE, 
+                            name: d.CANDIDATE, 
                             year: d.TIME_PERIOD, 
                             value: d.value
                         };
@@ -72,12 +71,12 @@ function rank(data_url, where, where_year) {
                     return b.value - a.value;
                 })
                 .map(function(d) {
-                    return d.area;
+                    return d.name;
                 })
         ;
 
         atable.sort(function(a,b) {
-            return max.indexOf(a.area) - max.indexOf(b.area);
+            return max.indexOf(a.name) - max.indexOf(b.name);
         });
 
         for (var i = year.indexOf(start); i < year.length; i++) {
@@ -104,7 +103,7 @@ function rank(data_url, where, where_year) {
         Bars(atable, start);
 
         function descr(d) {
-            return geo.Category(d.area).label + " " + Math.round(d.value * 10) / 10 + "%";
+            return geo.Category(d.name).label + " " + Math.round(d.value * 10) / 10 + "%";
         }
 
         function Bars(data, y) {
@@ -112,7 +111,7 @@ function rank(data_url, where, where_year) {
             for(var i = 0; i < data.length; i++) {
                 if (data[i].year == y) {
                     arr.push({
-                        area: data[i].area, 
+                        name: data[i].name, 
                         value: data[i].value, 
                         i: j++
                     });
@@ -136,12 +135,12 @@ function rank(data_url, where, where_year) {
                 }) // 270
                 .attr("text-anchor", "middle")
                 .text(function(d, i) {
-                    return d.area;
+                    return d.name;
                 });
 
             labels.transition().duration(500)
                 .text(function(d, i) {
-                    return d.area;
+                    return d.name;
                 })
                 .attr("class", function(d, i) {
                     return "text"; // (arr[0].i !== i)? "text" : "text max";
@@ -163,18 +162,20 @@ function rank(data_url, where, where_year) {
                 .attr("height", function(d, i) {
                     return ((height - 2 * margin) / arr.length) / 2;
                 })
-                .attr("class", "bar")
+                .attr("class", function(d, i) {
+                    return "bar rank" + dict.indexOf(d.name)
+                })
                 .attr("val", function(d, i) {
                     return d.value * 100000
                 })
                 .on("mouseover", function(d, i) {
-                    d3.select(this).classed("over", true);
+                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", true);
                 })
                 .on("mouseout", function(d, i) {
-                    d3.select(this).classed("over", false);
+                    d3.selectAll(".rank" + dict.indexOf(d.name)).classed("over", false);
                 })
                 .on("click", function(d, i) {
-                    var sel = d3.select(this);
+                    var sel = d3.selectAll(".rank" + dict.indexOf(d.name));
                     sel.classed("selected", !sel.classed("selected"));
                 })
                 .append("title").text(function(d, i){
