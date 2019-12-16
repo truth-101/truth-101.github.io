@@ -3,6 +3,7 @@ $( document ).ready(function() {
     btns = document.querySelectorAll(".btn");
     rank("../data/real_rank1.json", "#left_bars", "#left_years")
     rank("../data/rank1.json", "#bars", "#years")
+    match()
 
 
     btns.forEach(function(ele, i) {
@@ -12,7 +13,7 @@ $( document ).ready(function() {
             $("#left_bars svg").remove()
             rank("../data/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
             rank("../data/rank" + (i+1) + ".json", "#bars", "#years")
-
+            match()
         }
     })
 
@@ -23,6 +24,28 @@ $( document ).ready(function() {
             else
                 ele.classList.remove("active")
         })
+    }
+
+    function activate_match(arr) {
+        arr.forEach(function(ele) {
+            ele.add
+        })
+    }
+
+    function match() {
+        let all = Array.from(document.querySelectorAll("#rank .bar"))
+        console.log(all)
+        for (let i = 0; i < 20; i++) {
+            let matches = all.filter(function(ele) {
+                return ele.classList.contains("rank" + i)
+            })
+            matches.forEach(function(ele) {
+                ele.addEventListener("mouseover", function(e) {
+                    matches[0].classList.add("active");
+                    matches[1].classList.add("active");
+                })
+            })
+        }
     }
 
 })
@@ -163,7 +186,9 @@ function rank(data_url, where, where_year) {
                 .attr("height", function(d, i) {
                     return ((height - 2 * margin) / arr.length) / 2;
                 })
-                .attr("class", "bar")
+                .attr("class", function(d, i) {
+                    return "bar rank" + i
+                })
                 .attr("val", function(d, i) {
                     return d.value * 100000
                 })
