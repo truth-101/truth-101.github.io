@@ -391,7 +391,7 @@ function diff(i, where) {
             }
             
             d3.select(this).select('text')
-              .text(y.invert(pos.y).toFixed(2));
+              .text(21 - Math.floor(y.invert(pos.y)));
               
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
