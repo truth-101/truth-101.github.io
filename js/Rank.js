@@ -180,50 +180,7 @@ function rank(data_url, where, where_year) {
                     sel.classed("selected", !sel.classed("selected"));
                 });
 
-            // rect.enter().append("text")
-            //     .text(function(d, i){
-            //         let result = "0";
-            //         if (where == "#bars") {
-            //             result = parseInt(d.value) + "K"
-            //         }
-            //         else {
-            //             standard = 20
-
-            //             if (data_url == "../data/real_rank1.json") 
-            //                 standard = 30
-
-            //             result = parseInt(standard - d.value) + "위"
-            //         }
-
-            //         return result;
-            //     })
-            //     .attr("y", function(d, i) {
-            //         return vScale(i) + 12; // height - 25 - hScale(d.value);
-            //     })
-            //     .attr("x", function(d, i) {
-            //         return hScale(d.value) + 60; // vScale(i);
-            //     })
-            //     .attr("width", 300)
-            //     .attr("height", function() {
-            //         return ((height - 2 * margin) / arr.length) / 2;
-            //     })
-            //     ;
-
-
-            // filters
-
-            svg.selectAll("rect").data(arr).transition().duration(500)
-                .attr("width",function(d, i) {
-                    return hScale(d.value);
-                })
-                .attr("x", function(d, i) {
-                    return 50 // height - 25 - hScale(d.value);
-                })
-                .attr("class", function(d, i) {
-                    return "bar rank" + dict.indexOf(d.name)
-                });
-
-            svg.selectAll("text").data(arr).transition().duration(500)
+            rect.enter().append("text")
                 .text(function(d, i){
                     let result = "0";
                     if (where == "#bars") {
@@ -244,7 +201,53 @@ function rank(data_url, where, where_year) {
                     return vScale(i) + 12; // height - 25 - hScale(d.value);
                 })
                 .attr("x", function(d, i) {
-                    return hScale(d.value) + 70; // vScale(i);
+                    return hScale(d.value) + 60; // vScale(i);
+                })
+                .attr("width", 300)
+                .attr("height", function() {
+                    return ((height - 2 * margin) / arr.length) / 2;
+                })
+                .attr("class", "dataLabel")
+                ;
+
+
+            // filters
+
+            var gs = svg.selectAll("g")
+
+            gs.select("rect").data(arr).transition().duration(500)
+                .attr("width",function(d, i) {
+                    return hScale(d.value);
+                })
+                .attr("x", function(d, i) {
+                    return 50 // height - 25 - hScale(d.value);
+                })
+                .attr("class", function(d, i) {
+                    return "bar rank" + dict.indexOf(d.name)
+                });
+
+            svg.selectAll("text.dataLabel").data(arr).transition().duration(500)
+                .text(function(d, i){
+                    let result = "0";
+                    if (where == "#bars") {
+                        result = parseInt(d.value) + "K"
+                    }
+                    else {
+                        standard = 20
+
+                        if (data_url == "../data/real_rank1.json") 
+                            standard = 30
+
+                        result = parseInt(standard - d.value) + "위"
+                    }
+
+                    return result;
+                })
+                .attr("y", function(d, i) {
+                    return vScale(i) + 12; // height - 25 - hScale(d.value);
+                })
+                .attr("x", function(d, i) {
+                    return hScale(d.value) + 60; // vScale(i);
                 })
                 .attr("width", 300)
                 .attr("height", function() {
@@ -253,10 +256,10 @@ function rank(data_url, where, where_year) {
                 ;
 
 
-            var titles = svg.selectAll("rect title").data(arr);
-            titles.text(function(d, i) {
-                return descr(d);
-            });
+            // var titles = svg.selectAll("rect title").data(arr);
+            // titles.text(function(d, i) {
+            //     return descr(d);
+            // });
             
         }
 
