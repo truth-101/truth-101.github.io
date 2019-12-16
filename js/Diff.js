@@ -115,7 +115,7 @@ $( document ).ready(function() {
 
     diff(9, "#chart1");
     diff(12, "#chart2");
-    diff(9, "#chart3");
+    diff(7, "#chart3");
     diff(3, "#chart4");
 
     var btns = Array.from(document.querySelectorAll("#members .btn"))
