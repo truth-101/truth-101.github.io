@@ -210,8 +210,8 @@
                 "name":"Time",
                 "values":[ 
                    { 
-                      "id":"Real Rank",
-                      "name":"Real Rank"
+                      "id":"실제 순위 및 투표수",
+                      "name":"실제 순위 및 투표수"
                    }
                 ],
                 "role":"TIME_PERIOD"
