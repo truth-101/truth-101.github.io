@@ -105,10 +105,18 @@ function rank(data_url, where, where_year) {
 
         d3.select(where_year).html(lis);
 
-        var maxRange = (where == "#bars") ? 800 : 280;
-
-        var
+        var maxRange = (where == "#bars") ? 780 : 280,
             values = merged.map(d => d.value);
+
+        if (where == "#bars") {
+            values = merged.filter(function(md){
+                return md.year === start;
+            })
+            .map(d => d.value)
+        }
+
+        console.log(merged)
+        var
             vScale = d3.scale.linear().domain([0, 24]).range([10, height - 100]).clamp(true),
             hScale = d3.scale.linear().domain([
                 d3.min(values),
@@ -132,6 +140,7 @@ function rank(data_url, where, where_year) {
         }
 
         function Bars(data, y) {
+            console.log(data)
             var arr = [], j = 0;
             for(var i = 0; i < data.length; i++) {
                 if (data[i].year == y) {
@@ -139,6 +148,7 @@ function rank(data_url, where, where_year) {
                         name: data[i].name, 
                         value: data[i].value, 
                         rank: data[i].rank,
+                        year: data[i].year,
                         i: j++
                     });
                 }
@@ -215,10 +225,7 @@ function rank(data_url, where, where_year) {
             rect.enter().append("text")
                 .text(function(d, i){
                     let result = parseInt(d.value);
-                    if (where == "#bars") {
-                        result += "K"
-                    }
-                    else {
+                    if (where != "#bars") {
                         result += "표"
                     }
 
@@ -244,7 +251,23 @@ function rank(data_url, where, where_year) {
 
             gs.select("rect").data(arr).transition().duration(500)
                 .attr("width",function(d, i) {
-                    return hScale(d.value);
+                    console.log(d)
+
+                    if (where == "#bars") {
+                        vals = merged.filter(function(md){
+                                        return md.year === d.year;
+                                    })
+                                    .map(md => md.value);
+                                    
+                                        
+                        hScale_new = d3.scale.linear().domain([
+                            d3.min(vals),
+                            d3.max(vals)
+                        ]).range([0, maxRange]).clamp(true);
+                        return hScale_new(d.value);
+                    }
+                    else
+                        return hScale(d.value);
                 })
                 .attr("x", function(d, i) {
                     return 70 // height - 25 - hScale(d.value);
@@ -256,10 +279,7 @@ function rank(data_url, where, where_year) {
             svg.selectAll("text.dataLabel").data(arr).transition().duration(500)
                 .text(function(d, i){
                     let result = parseInt(d.value);
-                    if (where == "#bars") {
-                        result += "K"
-                    }
-                    else {
+                    if (where != "#bars") {
                         result += "표"
                     }
 
@@ -269,7 +289,21 @@ function rank(data_url, where, where_year) {
                     return vScale(i) + 12; // height - 25 - hScale(d.value);
                 })
                 .attr("x", function(d, i) {
-                    return hScale(d.value) + 80; // vScale(i);
+                    if (where == "#bars") {
+                        vals = merged.filter(function(md){
+                            return md.year === d.year;
+                        })
+                        .map(md => md.value);
+
+                        hScale_new = d3.scale.linear().domain([
+                            d3.min(vals),
+                            d3.max(vals)
+                        ]).range([0, maxRange]).clamp(true);
+                        return hScale_new(d.value) + 80;
+                    }
+                    else
+                        return hScale(d.value) + 80;
+                    // return hScale(d.value) + 80; // vScale(i);
                 })
                 .attr("width", 300)
                 .attr("height", function() {
