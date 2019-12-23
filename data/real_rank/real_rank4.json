@@ -124,113 +124,15 @@
                 "name":"Candidate",
                 "values":[ 
                     {
-                        "id": "강민희",
-                        "name": "강민희"
-                    },
-                    {
-                        "id": "구정모",
-                        "name": "구정모"
-                    },
-                    {
-                        "id": "금동현",
-                        "name": "금동현"
-                    },
-                    {
-                        "id": "김민규",
-                        "name": "김민규"
-                    },
-                    {
-                        "id": "김요한",
-                        "name": "김요한"
-                    },
-                    {
-                        "id": "김우석",
-                        "name": "김우석"
-                    },
-                    {
-                        "id": "남도현",
-                        "name": "남도현"
-                    },
-                    {
-                        "id": "손동표",
-                        "name": "손동표"
-                    },
-                    {
-                        "id": "송유빈",
-                        "name": "송유빈"
-                    },
-                    {
-                        "id": "송형준",
-                        "name": "송형준"
-                    },
-                    {
-                        "id": "이세진",
-                        "name": "이세진"
-                    },
-                    {
-                        "id": "이은상",
-                        "name": "이은상"
-                    },
-                    {
-                        "id": "이진혁",
-                        "name": "이진혁"
-                    },
-                    {
-                        "id": "이한결",
-                        "name": "이한결"
-                    },
-                    {
-                        "id": "조승연",
-                        "name": "조승연"
-                    },
-                    {
-                        "id": "차준호",
-                        "name": "차준호"
-                    },
-                    {
-                        "id": "토니",
-                        "name": "토니"
-                    },
-                    {
-                        "id": "한승우",
-                        "name": "한승우"
-                    },
-                    {
-                        "id": "함원진",
-                        "name": "함원진"
-                    },
-                    {
-                        "id": "황윤성",
-                        "name": "황윤성"
-                    }
-                ]
-             },
-             { 
-                "id":"TIME_PERIOD",
-                "name":"Time",
-                "values":[ 
-                   { 
-                      "id":"Real Rank",
-                      "name":"Real Rank"
-                   }
-                ],
-                "role":"TIME_PERIOD"
-             },
-             { 
-                "keyPosition": 1,
-                "id":"RANK",
-                "name":"Rank",
-                "values":[ 
-                    {
-                        "id": "강민희",
+                        "id": "10위",
                         "name": "10위"
                     },
                     {
-                        "id": "구정모",
+                        "id": "12위",
                         "name": "12위"
                     },
                     {
-                        "id": "금동현",
+                        "id": "14위",
                         "name": "14위"
                     },
                     {
@@ -301,6 +203,29 @@
                         "id": "황윤성",
                         "name": "15위"
                     }
+                ]
+             },
+             { 
+                "id":"TIME_PERIOD",
+                "name":"Time",
+                "values":[ 
+                   { 
+                      "id":"Real Rank",
+                      "name":"Real Rank"
+                   }
+                ],
+                "role":"TIME_PERIOD"
+             },
+             { 
+                "keyPosition": 1,
+                "id":"RANK",
+                "name":"Rank",
+                "values":[ 
+                    { 
+                       "id":"900000",
+                       "name":"Total"
+                    }
+                    
                 ]
              },
              { 

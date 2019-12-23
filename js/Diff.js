@@ -196,7 +196,6 @@ function diff(i, where) {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var data = d3.tsv.parse(diff_data[i]);
-    console.log(data)
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "time";
