@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 
     btns = document.querySelectorAll(".btn");
-    rank("../data/real_rank1.json", "#left_bars", "#left_years")
-    rank("../data/rank1.json", "#bars", "#years")
+    rank("../data/real_rank/real_rank1.json", "#left_bars", "#left_years")
+    rank("../data/data_rank/rank1.json", "#bars", "#years")
 
 
     btns.forEach(function(ele, i) {
@@ -10,8 +10,8 @@ $( document ).ready(function() {
             activate(i)
             $("#bars svg").remove()
             $("#left_bars svg").remove()
-            rank("../data/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
-            rank("../data/rank" + (i+1) + ".json", "#bars", "#years")
+            rank("../data/real_rank/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
+            rank("../data/data_rank/rank" + (i+1) + ".json", "#bars", "#years")
         }
     })
 
@@ -50,32 +50,51 @@ function rank(data_url, where, where_year) {
             start = String(year[0]),
             atable = ds.toTable(
                 {
-                    type: 'arrobj', 
+                    type: 'arrobj',
                     content: 'id'
                 },
                 function(d) {
                     if (d.TIME_PERIOD >= start){
                         return {
                             name: d.CANDIDATE, 
-                            year: d.TIME_PERIOD, 
+                            year: d.TIME_PERIOD,
                             value: d.value
                         };
                     }
                 }
             ),
-            max = atable
-                .filter(function(d){
-                    return d.year === start;
-                })
-                .sort(function(a,b) {
-                    return b.value - a.value;
-                })
-                .map(function(d) {
-                    return d.name;
-                })
+            btable = ds.toTable(
+                {
+                    type: 'arrobj'
+                },
+                function(d) {
+                    if (d.TIME_PERIOD >= start){
+                        return {
+                            rank: d.CANDIDATE, 
+                            value: d.value
+                        };
+                    }
+                }
+            )
         ;
 
-        atable.sort(function(a,b) {
+        var merged = atable.map((ele, index) => {
+            let rank = btable.find(e => e.value === ele.value);
+            return Object.assign({}, ele, rank)
+         });
+
+        var max = merged
+            .filter(function(d){
+                return d.year === start;
+            })
+            .sort(function(a,b) {
+                return b.value - a.value;
+            })
+            .map(function(d) {
+                return d.name;
+        });
+                
+        merged.sort(function(a,b) {
             return max.indexOf(a.name) - max.indexOf(b.name);
         });
 
@@ -86,9 +105,23 @@ function rank(data_url, where, where_year) {
 
         d3.select(where_year).html(lis);
 
+        var maxRange = (where == "#bars") ? 780 : 280,
+            values = merged.map(d => d.value);
+
+        if (where == "#bars") {
+            values = merged.filter(function(md){
+                return md.year === start;
+            })
+            .map(d => d.value)
+        }
+
+        console.log(merged)
         var
             vScale = d3.scale.linear().domain([0, 24]).range([10, height - 100]).clamp(true),
-            hScale = d3.scale.linear().domain([0, 120]).range([0, 960]).clamp(true),
+            hScale = d3.scale.linear().domain([
+                d3.min(values),
+                d3.max(values)
+            ]).range([0, maxRange]).clamp(true),
             svg = d3.select(where).append("svg").attr("width", width).attr("height", height),
             li = d3.selectAll(where_year + " li")
         ;
@@ -97,22 +130,25 @@ function rank(data_url, where, where_year) {
             li.classed("selected", false);
             var sel = d3.select(this);
             sel.classed("selected", true);
-            Bars(atable, sel.text());
+            Bars(merged, sel.text());
         });
 
-        Bars(atable, start);
+        Bars(merged, start);
 
         function descr(d) {
             return geo.Category(d.name).label + " " + Math.round(d.value * 10) / 10 + "%";
         }
 
         function Bars(data, y) {
+            console.log(data)
             var arr = [], j = 0;
             for(var i = 0; i < data.length; i++) {
                 if (data[i].year == y) {
                     arr.push({
                         name: data[i].name, 
                         value: data[i].value, 
+                        rank: data[i].rank,
+                        year: data[i].year,
                         i: j++
                     });
                 }
@@ -129,18 +165,24 @@ function rank(data_url, where, where_year) {
                 .attr("class", function(d, i) {
                     return "text"; // (arr[0].i !== i)? "text" : "text max";
                 })
-                .attr("x", 25)
+                .attr("x", 32)
                 .attr("y", function(d, i) {
                     return vScale(i) + 13
                 }) // 270
                 .attr("text-anchor", "middle")
                 .text(function(d, i) {
-                    return d.name;
+                    if (where == "#bars")
+                        return (i + 1) + "위: " + d.name;
+                    else
+                        return d.rank + ": " + d.name;
                 });
 
             labels.transition().duration(500)
                 .text(function(d, i) {
-                    return d.name;
+                    if (where == "#bars")
+                        return (i + 1) + "위: " + d.name;
+                    else
+                        return d.rank + ": " + d.name;
                 })
                 .attr("class", function(d, i) {
                     return "text"; // (arr[0].i !== i)? "text" : "text max";
@@ -152,7 +194,7 @@ function rank(data_url, where, where_year) {
             rect.enter().append("g")
                 .append("rect")
                 .attr("x", function(d, i) {
-                    return 50; // vScale(i);
+                    return 100; // vScale(i);
                 })
                 .attr("y", function(d, i) {
                     return vScale(i); // height - 25 - hScale(d.value);
@@ -182,17 +224,9 @@ function rank(data_url, where, where_year) {
 
             rect.enter().append("text")
                 .text(function(d, i){
-                    let result = "0";
-                    if (where == "#bars") {
-                        result = parseInt(d.value) + "K"
-                    }
-                    else {
-                        standard = 20
-
-                        if (data_url == "../data/real_rank1.json") 
-                            standard = 30
-
-                        result = parseInt(standard - d.value) + "위"
+                    let result = parseInt(d.value);
+                    if (where != "#bars") {
+                        result += "표"
                     }
 
                     return result;
@@ -201,7 +235,7 @@ function rank(data_url, where, where_year) {
                     return vScale(i) + 12; // height - 25 - hScale(d.value);
                 })
                 .attr("x", function(d, i) {
-                    return hScale(d.value) + 60; // vScale(i);
+                    return hScale(d.value) + 80; // vScale(i);
                 })
                 .attr("width", 300)
                 .attr("height", function() {
@@ -217,10 +251,26 @@ function rank(data_url, where, where_year) {
 
             gs.select("rect").data(arr).transition().duration(500)
                 .attr("width",function(d, i) {
-                    return hScale(d.value);
+                    console.log(d)
+
+                    if (where == "#bars") {
+                        vals = merged.filter(function(md){
+                                        return md.year === d.year;
+                                    })
+                                    .map(md => md.value);
+                                    
+                                        
+                        hScale_new = d3.scale.linear().domain([
+                            d3.min(vals),
+                            d3.max(vals)
+                        ]).range([0, maxRange]).clamp(true);
+                        return hScale_new(d.value);
+                    }
+                    else
+                        return hScale(d.value);
                 })
                 .attr("x", function(d, i) {
-                    return 50 // height - 25 - hScale(d.value);
+                    return 70 // height - 25 - hScale(d.value);
                 })
                 .attr("class", function(d, i) {
                     return "bar rank" + dict.indexOf(d.name)
@@ -228,17 +278,9 @@ function rank(data_url, where, where_year) {
 
             svg.selectAll("text.dataLabel").data(arr).transition().duration(500)
                 .text(function(d, i){
-                    let result = "0";
-                    if (where == "#bars") {
-                        result = parseInt(d.value) + "K"
-                    }
-                    else {
-                        standard = 20
-
-                        if (data_url == "../data/real_rank1.json") 
-                            standard = 30
-
-                        result = parseInt(standard - d.value) + "위"
+                    let result = parseInt(d.value);
+                    if (where != "#bars") {
+                        result += "표"
                     }
 
                     return result;
@@ -247,7 +289,21 @@ function rank(data_url, where, where_year) {
                     return vScale(i) + 12; // height - 25 - hScale(d.value);
                 })
                 .attr("x", function(d, i) {
-                    return hScale(d.value) + 60; // vScale(i);
+                    if (where == "#bars") {
+                        vals = merged.filter(function(md){
+                            return md.year === d.year;
+                        })
+                        .map(md => md.value);
+
+                        hScale_new = d3.scale.linear().domain([
+                            d3.min(vals),
+                            d3.max(vals)
+                        ]).range([0, maxRange]).clamp(true);
+                        return hScale_new(d.value) + 80;
+                    }
+                    else
+                        return hScale(d.value) + 80;
+                    // return hScale(d.value) + 80; // vScale(i);
                 })
                 .attr("width", 300)
                 .attr("height", function() {
