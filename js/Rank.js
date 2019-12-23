@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 
     btns = document.querySelectorAll(".btn");
-    rank("../data/real_rank1.json", "#left_bars", "#left_years")
-    rank("../data/rank1.json", "#bars", "#years")
+    rank("../data/real_rank/real_rank1.json", "#left_bars", "#left_years")
+    rank("../data/data_rank/rank1.json", "#bars", "#years")
 
 
     btns.forEach(function(ele, i) {
@@ -10,8 +10,8 @@ $( document ).ready(function() {
             activate(i)
             $("#bars svg").remove()
             $("#left_bars svg").remove()
-            rank("../data/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
-            rank("../data/rank" + (i+1) + ".json", "#bars", "#years")
+            rank("../data/real_rank/real_rank" + (i+1) + ".json", "#left_bars", "#left_years")
+            rank("../data/data_rank/rank" + (i+1) + ".json", "#bars", "#years")
         }
     })
 
@@ -189,7 +189,7 @@ function rank(data_url, where, where_year) {
                     else {
                         standard = 20
 
-                        if (data_url == "../data/real_rank1.json") 
+                        if (data_url == "../data/real_rank/real_rank1.json") 
                             standard = 30
 
                         result = parseInt(standard - d.value) + "위"
@@ -235,7 +235,7 @@ function rank(data_url, where, where_year) {
                     else {
                         standard = 20
 
-                        if (data_url == "../data/real_rank1.json") 
+                        if (data_url == "../data/real_rank/real_rank1.json") 
                             standard = 30
 
                         result = parseInt(standard - d.value) + "위"
